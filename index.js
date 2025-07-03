@@ -1,4 +1,4 @@
-const contacts = [
+const dataContacts = [
   {
     id: 1,
     name: "M Haidar Hanif",
@@ -31,6 +31,38 @@ const contacts = [
     },
     isFavorited: false,
   },
+  {
+    id: 3,
+    name: "Steve Jobs",
+    age: 56,
+    email: "steve@apple.com",
+    phone: "+1-555-123-456",
+    website: "https://apple.com",
+    labels: ["work"],
+    address: {
+      street: "1 Infinite Loop",
+      city: "Cupertino",
+      state: "California",
+      country: "United States",
+    },
+    isFavorited: true,
+  },
 ];
 
-console.log(contacts);
+function renderContacts(contacts) {
+  const contactsListElement = document.getElementById("contacts-list");
+
+  const contactsElements = contacts
+    .map((contact) => {
+      return `<li>
+      <p>Name: ${contact.name}</p>
+      <p>Email: ${contact.email}</p>
+      <p>Phone: ${contact.phone}</p>
+      </li>`;
+    })
+    .join("");
+
+  contactsListElement.innerHTML = contactsElements;
+}
+
+renderContacts(dataContacts);
