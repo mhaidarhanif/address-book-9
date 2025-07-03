@@ -1,4 +1,4 @@
-const dataContacts = [
+let dataContacts = [
   {
     id: 1,
     name: "M Haidar Hanif",
@@ -49,6 +49,12 @@ const dataContacts = [
   },
 ];
 
+function deleteContact(id) {
+  const updatedContacts = dataContacts.filter((contact) => contact.id !== id);
+  dataContacts = updatedContacts;
+  renderContacts(dataContacts);
+}
+
 function renderContacts(contacts) {
   const contactsListElement = document.getElementById("contacts-list");
 
@@ -58,6 +64,7 @@ function renderContacts(contacts) {
       <p>Name: ${contact.name}</p>
       <p>Email: ${contact.email}</p>
       <p>Phone: ${contact.phone}</p>
+      <button onclick="deleteContact(${contact.id})">Delete</button>
       </li>`;
     })
     .join("");
